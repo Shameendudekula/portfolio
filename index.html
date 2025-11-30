@@ -98,18 +98,30 @@
             Currently improving: backend architecture, scalability, and deployment pipelines.
           </p>
 
-          <!-- CTA Hierarchy: Primary → Secondary → Tertiary -->
-          <div class="flex flex-wrap gap-5 pt-6">
-            <a href="#projects" class="px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-lg">
-              View Projects
-            </a>
-            <a href="/Shameen_Resume.pdf" download class="px-8 py-4 border-2 border-primary text-primary dark:text-white font-medium rounded-xl hover:bg-primary hover:text-white transition">
-              Download Resume
-            </a>
-            <a href="#contact" class="px-8 py-4 text-primary font-medium hover:underline transition">
-              Contact →
-            </a>
-          </div>
+          <!-- CTA Hierarchy: Primary → Secondary → View + Download Resume → Contact -->
+<div class="flex flex-wrap gap-5 pt-6">
+  <!-- Primary: View Projects -->
+  <a href="#projects" class="px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-lg">
+    View Projects
+  </a>
+
+  <!-- Secondary: View Resume (opens in new tab) -->
+  <a href="/Shameen_Resume.pdf" target="_blank" rel="noopener noreferrer"
+     class="px-8 py-4 bg-primary/10 text-primary font-medium rounded-xl hover:bg-primary/20 dark:hover:bg-primary/30 transition border border-primary/30">
+    View Resume
+  </a>
+
+  <!-- Download Resume -->
+  <a href="/Shameen_Resume.pdf" download
+     class="px-8 py-4 border-2 border-primary text-primary dark:text-white font-medium rounded-xl hover:bg-primary hover:text-white transition">
+    Download Resume
+  </a>
+
+  <!-- Tertiary: Contact -->
+  <a href="#contact" class="px-8 py-4 text-primary font-medium hover:underline transition self-center">
+    Contact
+  </a>
+</div>
         </div>
 
        <!-- Your Real Professional Photo – Looks Amazing -->
