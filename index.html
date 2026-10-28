@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dudekula Shameen | Web Developer</title>
-    <meta name="description" content="Self-taught web developer building production-grade full-stack applications through disciplined execution and real-world projects." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shameen Dudekula | Full-Stack &amp; Applied AI</title>
+    <meta name="description" content="Shameen Dudekula – Computer Science student and Full Stack Development Intern building full-stack web apps with Node.js and MongoDB, and Python / machine-learning tools with Streamlit.">
 
     <!-- Favicon – Clean "S" monogram (works perfectly in light/dark mode) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d9488'/><text x='50' y='66' font-family='Inter,Arial,sans-serif' font-size='65' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d9488'/><text x='50' y='66' font-family='Inter,Arial,sans-serif' font-size='65' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
 
     <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Apply saved / system theme before paint to avoid a light flash -->
+    <script>
+      try {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (e) {}
+    </script>
 
     <!-- Tailwind + Alpine -->
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
     <script>
       tailwind.config = {
@@ -32,128 +41,161 @@
     </script>
 
     <style>
+      [x-cloak] { display: none !important; }
+      /* Keep section headings clear of the fixed navbar when jumping to #anchors */
+      section[id] { scroll-margin-top: 5rem; }
       .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
       .reveal.active { opacity: 1; transform: translateY(0); }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal { opacity: 1; transform: none; transition: none; }
+        *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      }
     </style>
   </head>
 
   <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
 
-    <!-- Dark Mode Toggle – Visible & Beautiful -->
-    <div x-data="{ dark: false }" x-init="
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        dark = true; document.documentElement.classList.add('dark')
-      }
-      $watch('dark', val => {
-        if (val) { document.documentElement.classList.add('dark'); localStorage.theme = 'dark' }
-        else { document.documentElement.classList.remove('dark'); localStorage.theme = 'light' }
-      })
-    ">
-      <button type="button" @click="dark = !dark" :aria-label="dark ? 'Switch to light mode' : 'Switch to dark mode'" aria-label="Toggle dark mode" 
-        class="fixed top-8 right-8 z-50 p-4 rounded-full shadow-xl transition-all duration-300
-               bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600
-               hover:scale-110 hover:shadow-2xl">
-        <svg x-show="!dark" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-        </svg>
-        <svg x-show="dark" class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707z" clip-rule="evenodd"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Transparent Glass Navigation -->
+    <!-- Glass Navigation with dark-mode toggle and mobile menu -->
     <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-         x-data="{ scrolled: false }"
-         @scroll.window="scrolled = (window.pageYOffset > 50)">
+         x-data="{ scrolled: false, open: false }"
+         @scroll.window="scrolled = (window.pageYOffset > 50)"
+         @click.outside="open = false"
+         @keydown.escape.window="open = false">
       <div class="absolute inset-0 backdrop-blur-md pointer-events-none transition-all"
-           :class="scrolled ? 'bg-white/80 dark:bg-gray-900/80 shadow-md border-b border-gray-200/50 dark:border-gray-700/50' : 'bg-transparent'"></div>
-      <div class="relative max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold text-primary">Dudekula Shameen</a>
-        <div class="hidden md:flex space-x-12 text-lg font-medium">
-          <a href="#projects" class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Projects</a>
-          <a href="#about"    class="text-gray-800 dark:text-gray-200 hover:text-primary transition">About</a>
-          <a href="#contact"  class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Contact</a>
+           :class="(scrolled || open) ? 'bg-white/90 dark:bg-gray-900/90 shadow-md border-b border-gray-200/50 dark:border-gray-700/50' : 'bg-transparent'"></div>
+      <div class="relative max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+        <a href="#" class="text-xl sm:text-2xl md:text-xl lg:text-2xl font-bold text-primary whitespace-nowrap">Shameen Dudekula</a>
+
+        <div class="flex items-center gap-2 md:gap-4 lg:gap-6">
+          <div class="hidden md:flex md:gap-4 lg:gap-8 text-sm lg:text-base font-medium">
+            <a href="#about"        class="text-gray-800 dark:text-gray-200 hover:text-primary transition">About</a>
+            <a href="#experience"   class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Experience</a>
+            <a href="#skills"       class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Skills</a>
+            <a href="#projects"     class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Projects</a>
+            <a href="#certificates" class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Certificates</a>
+            <a href="#contact"      class="text-gray-800 dark:text-gray-200 hover:text-primary transition">Contact</a>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <button type="button" id="theme-toggle" aria-label="Toggle dark mode"
+                  x-data="{ dark: document.documentElement.classList.contains('dark') }"
+                  :aria-label="dark ? 'Switch to light mode' : 'Switch to dark mode'"
+                  @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); try { localStorage.theme = dark ? 'dark' : 'light' } catch (e) {}"
+                  class="p-2.5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:scale-110 transition">
+            <svg x-show="!dark" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+            <svg x-show="dark" x-cloak class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+
+          <!-- Hamburger (mobile only) -->
+          <button type="button" id="menu-toggle" class="md:hidden p-2.5 rounded-lg text-gray-800 dark:text-gray-200 hover:text-primary transition"
+                  @click="open = !open" :aria-expanded="open.toString()" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+            <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" x-show="open" x-cloak x-transition.opacity class="md:hidden relative border-t border-gray-200/50 dark:border-gray-700/50">
+        <div class="px-6 py-4 flex flex-col text-lg font-medium">
+          <a href="#about"        @click="open = false" class="py-3 text-gray-800 dark:text-gray-200 hover:text-primary transition">About</a>
+          <a href="#experience"   @click="open = false" class="py-3 text-gray-800 dark:text-gray-200 hover:text-primary transition">Experience</a>
+          <a href="#skills"       @click="open = false" class="py-3 text-gray-800 dark:text-gray-200 hover:text-primary transition">Skills</a>
+          <a href="#projects"     @click="open = false" class="py-3 text-gray-800 dark:text-gray-200 hover:text-primary transition">Projects</a>
+          <a href="#certificates" @click="open = false" class="py-3 text-gray-800 dark:text-gray-200 hover:text-primary transition">Certificates</a>
+          <a href="#contact"      @click="open = false" class="py-3 text-gray-800 dark:text-gray-200 hover:text-primary transition">Contact</a>
         </div>
       </div>
     </nav>
 
-    <!-- HERO – Improved Hierarchy + Confidence + Avatar -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-32">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center reveal">
-        <div class="space-y-8">
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-28 pb-16">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal">
+        <div class="space-y-7">
           <div>
-            <h1 class="text-5xl md:text-6xl font-bold leading-tight">
-              Dudekula <span class="text-primary">Shameen</span>
+            <p class="inline-flex items-center gap-1.5 text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+              Karlskrona, Sweden
+            </p>
+            <h1 class="mt-4 text-5xl md:text-6xl font-bold leading-tight">
+              Shameen <span class="text-primary">Dudekula</span>
             </h1>
-            <p class="text-2xl mt-4 text-gray-600 dark:text-gray-400">Web Developer • Full-Stack in Progress</p>
+            <p class="text-xl md:text-2xl mt-4 text-gray-600 dark:text-gray-400">Computer Science Student • Full-Stack &amp; Applied AI</p>
           </div>
 
-          <p class="text-xl text-gray-700 dark:text-gray-300 max-w-lg">
-            Building production-ready web applications through structured execution and consistent shipping.
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-lg">
+            I build working prototypes, from full-stack web apps connected through REST APIs to Python and machine-learning tools with interactive interfaces.
           </p>
 
-          <!-- New short line – requested -->
-          <p class="text-lg font-medium text-primary/80">
-            Currently improving: backend architecture, scalability, and deployment pipelines.
+          <p class="text-base md:text-lg font-medium text-primary/90">
+            Currently: Exchange student at Blekinge Institute of Technology, Sweden.
           </p>
 
-          <!-- CTA Hierarchy: Primary → Secondary → View + Download Resume → Contact -->
-<div class="flex flex-wrap gap-5 pt-6">
-  <!-- Primary: View Projects -->
-  <a href="#projects" class="px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-lg">
-    View Projects
-  </a>
-
-  <!-- Secondary: View Resume (opens in new tab) -->
-  <a href="/Shameen_Resume.pdf" target="_blank" rel="noopener noreferrer"
-     class="px-8 py-4 bg-primary/10 text-primary font-medium rounded-xl hover:bg-primary/20 dark:hover:bg-primary/30 transition border border-primary/30">
-    View Resume
-  </a>
-
-  <!-- Download Resume -->
-  <a href="/Shameen_Resume.pdf" download
-     class="px-8 py-4 border-2 border-primary text-primary dark:text-white font-medium rounded-xl hover:bg-primary hover:text-white transition">
-    Download Resume
-  </a>
-
-  <!-- Tertiary: Contact -->
-  <a href="#contact" class="px-8 py-4 text-primary font-medium hover:underline transition self-center">
-    Contact
-  </a>
-</div>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="#projects" class="px-7 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-lg">
+              View Projects
+            </a>
+            <a href="/Shameen_Resume.pdf" target="_blank" rel="noopener noreferrer"
+               class="px-7 py-4 bg-primary/10 text-primary font-medium rounded-xl hover:bg-primary/20 dark:hover:bg-primary/30 transition border border-primary/30">
+              View Resume
+            </a>
+            <a href="/Shameen_Resume.pdf" download
+               class="px-7 py-4 border-2 border-primary text-primary dark:text-white font-medium rounded-xl hover:bg-primary hover:text-white transition">
+              Download Resume
+            </a>
+          </div>
         </div>
 
-       <!-- Your Real Professional Photo – Looks Amazing -->
-<div class="flex justify-center">
-  <img 
-    src="/passport_photo.jpg" 
-    alt="Dudekula Shameen" 
-    class="w-80 h-80 md:w-96 md:h-96 object-cover rounded-3xl border-8 border-white dark:border-gray-800 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-3xl"
-    loading="lazy"
-  />
-</div>
+        <!-- Photo: first on mobile, right column on desktop -->
+        <div class="flex justify-center order-first md:order-last">
+          <img src="/passport_photo.jpg" alt="Shameen Dudekula"
+               class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover rounded-3xl border-8 border-white dark:border-gray-800 shadow-2xl transition-all duration-500 hover:scale-[1.02]">
+        </div>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-32 px-6 bg-gray-50 dark:bg-gray-800/30">
-      <div class="max-w-4xl mx-auto text-center space-y-10 reveal">
+    <section id="about" class="py-28 px-6 bg-gray-50 dark:bg-gray-800/30">
+      <div class="max-w-5xl mx-auto text-center space-y-10 reveal">
         <h2 class="text-4xl font-bold">About</h2>
         <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-          I build complete applications from concept to deployment. My process is structured: identify a real problem, design a clean solution, write maintainable code, test thoroughly, and ship.
+          I'm a Computer Science and Engineering student on a Bachelor-level exchange at Blekinge Institute of Technology in Sweden. I enjoy turning ideas into working software: interactive Streamlit apps, a scikit-learn price-estimation model, full-stack web apps with Node.js and MongoDB, and an academic study on explainable AI. I'm especially interested in how AI and well-designed digital tools can make expert knowledge easier to find and apply.
         </p>
-        <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-          I learn new technologies by applying them immediately in production-grade projects. When faced with unknowns, I research, implement, debug, and document — turning gaps into strengths.
-        </p>
-        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+        <!-- Education -->
+        <h3 class="pt-6 text-2xl font-semibold">Education</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+            <p class="text-sm font-medium text-primary">Aug 2026 – Jun 2027 · Karlskrona, Sweden</p>
+            <h4 class="mt-2 text-xl font-bold">Blekinge Institute of Technology (BTH)</h4>
+            <p class="mt-3 text-gray-700 dark:text-gray-300">Student Exchange Programme – Bachelor Qualification Plan in Computer Science</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+            <p class="text-sm font-medium text-primary">2023 – 2027 · India</p>
+            <h4 class="mt-2 text-xl font-bold">Jawaharlal Nehru Technological University Anantapur (JNTUA)</h4>
+            <p class="mt-3 text-gray-700 dark:text-gray-300">B.Tech in Computer Science and Engineering (in progress)</p>
+          </div>
+        </div>
+
+        <!-- Journey -->
+        <h3 class="pt-6 text-2xl font-semibold">Journey</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl border border-gray-200 dark:border-gray-700">
             <div class="text-5xl font-bold text-primary">2024</div>
             <p class="mt-4 text-lg">Started building real applications independently</p>
           </div>
           <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl border border-gray-200 dark:border-gray-700">
             <div class="text-5xl font-bold text-primary">2025</div>
-            <p class="mt-4 text-lg">Strengthening full-stack depth and production workflows</p>
+            <p class="mt-4 text-lg">Full-stack depth with Node.js and MongoDB, plus Python, data and ML projects</p>
           </div>
           <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl border border-gray-200 dark:border-gray-700">
             <div class="text-5xl font-bold text-primary">2026</div>
@@ -163,82 +205,198 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-28 px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">Experience</h2>
+        <div class="space-y-8">
+          <div class="bg-white dark:bg-gray-900 p-8 md:p-10 rounded-2xl border border-gray-200 dark:border-gray-700 reveal">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3 class="text-xl md:text-2xl font-bold">Virtual Intern</h3>
+                <p class="mt-1 text-gray-600 dark:text-gray-400">Infosys Springboard Virtual Internship 7.0 (Batch 1) · Jun 2026 – Aug 2026</p>
+              </div>
+              <span class="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">Completed</span>
+            </div>
+            <p class="mt-5 text-gray-700 dark:text-gray-300 leading-relaxed">
+              Worked in a team on HireHelper, a mentor-guided software project, following Agile practices and collaborative development workflows.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Agile</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Team Collaboration</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Project Coordination</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Industry Practices</span>
+            </div>
+            <p class="mt-5 text-sm text-gray-500 dark:text-gray-400">Official certificate pending issuance.</p>
+            <a href="https://drive.google.com/file/d/1jXBYtK6B328lriReLW5JqQCfZxY3CAfI/view" target="_blank" rel="noopener noreferrer"
+               class="inline-block mt-4 font-medium text-primary hover:underline">View completion email →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SKILLS -->
-    <section class="py-32 px-6">
-      <div class="max-w-5xl mx-auto">
+    <section id="skills" class="py-28 px-6 bg-gray-50 dark:bg-gray-800/30">
+      <div class="max-w-6xl mx-auto">
         <h2 class="text-4xl font-bold text-center mb-16">Skills</h2>
-        <div class="grid md:grid-cols-3 gap-12">
-          <div class="space-y-6 reveal">
-            <h3 class="text-xl font-semibold text-primary">Frontend</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div class="space-y-5 reveal">
+            <h3 class="text-xl font-semibold text-primary">Programming</h3>
             <div class="flex flex-wrap gap-3">
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">HTML</span>
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">CSS</span>
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">JavaScript</span>
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Responsive Design</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">Python</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">JavaScript (ES6+)</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">SQL</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">HTML</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">CSS</span>
             </div>
           </div>
-          <div class="space-y-6 reveal">
-            <h3 class="text-xl font-semibold text-primary">Backend</h3>
+          <div class="space-y-5 reveal">
+            <h3 class="text-xl font-semibold text-primary">Web &amp; Backend</h3>
             <div class="flex flex-wrap gap-3">
-              <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">Node.js &amp; Express</span>
-              <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">REST APIs</span>
-              <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">MongoDB</span>
-              <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">JWT Auth</span>
+              <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm">Node.js</span>
+              <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm">Express.js</span>
+              <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm">REST APIs</span>
+              <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm">MongoDB</span>
+              <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm">MySQL</span>
+              <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm">JWT Auth</span>
             </div>
           </div>
-          <div class="space-y-6 reveal">
+          <div class="space-y-5 reveal">
+            <h3 class="text-xl font-semibold text-primary">Data &amp; Applied AI</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">Pandas</span>
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">NumPy</span>
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">scikit-learn</span>
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">Matplotlib</span>
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">Seaborn</span>
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">Streamlit</span>
+              <span class="px-4 py-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm">SHAP · LIME</span>
+            </div>
+          </div>
+          <div class="space-y-5 reveal">
             <h3 class="text-xl font-semibold text-primary">Tools</h3>
             <div class="flex flex-wrap gap-3">
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Git &amp; GitHub</span>
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Vercel / Render</span>
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">VS Code</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">Git &amp; GitHub</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">Postman</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">VS Code</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">Vercel</span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">Streamlit Cloud</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS – Polished Cards -->
-    <section id="projects" class="py-32 px-6 bg-gray-50 dark:bg-gray-800/30">
+    <!-- PROJECTS – filterable cards -->
+    <section id="projects" class="py-28 px-6" x-data="{ filter: 'all' }">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-20">Projects</h2>
-        <div class="grid md:grid-cols-2 gap-16">
+        <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-14" role="group" aria-label="Filter projects">
+          <button type="button" data-filter="all" @click="filter = 'all'" :aria-pressed="(filter === 'all').toString()" aria-pressed="true"
+                  :class="filter === 'all' ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-primary'"
+                  class="px-5 py-2 rounded-full border text-sm font-medium transition">All</button>
+          <button type="button" data-filter="web" @click="filter = 'web'" :aria-pressed="(filter === 'web').toString()" aria-pressed="false"
+                  :class="filter === 'web' ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-primary'"
+                  class="px-5 py-2 rounded-full border text-sm font-medium transition">Full-Stack Web</button>
+          <button type="button" data-filter="ai" @click="filter = 'ai'" :aria-pressed="(filter === 'ai').toString()" aria-pressed="false"
+                  :class="filter === 'ai' ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-primary'"
+                  class="px-5 py-2 rounded-full border text-sm font-medium transition">Python &amp; AI</button>
+          <button type="button" data-filter="research" @click="filter = 'research'" :aria-pressed="(filter === 'research').toString()" aria-pressed="false"
+                  :class="filter === 'research' ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-primary'"
+                  class="px-5 py-2 rounded-full border text-sm font-medium transition">Research</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
 
           <!-- WardrobeIQ -->
-          <div class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal group">
-            <div class="h-64 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-              <p class="text-3xl font-bold text-primary">WardrobeIQ</p>
+          <article data-category="web" x-show="filter === 'all' || filter === 'web'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-primary text-center">WardrobeIQ</p>
             </div>
-            <div class="p-10 space-y-6">
-              <h3 class="text-2xl font-bold">WardrobeIQ – Smart Wardrobe &amp; Outfit Planner</h3>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary">Full-Stack Web</span>
+              <h3 class="text-2xl font-bold">WardrobeIQ – Smart Wardrobe Planner</h3>
               <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Practical wardrobe management system that helps users organize clothing items and make faster outfit decisions. Supports uploading, categorizing, and tracking outfits while preventing weekly repetition.
+                Full-stack app for managing clothing items, images, categories, colours and notes. An HTML/CSS/JS frontend connects to Node.js + Express services with MongoDB through REST endpoints, with outfit suggestions, wear history and a responsive UI.
               </p>
-              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Implemented occasion-based and weather-aware outfit suggestions, wear-history tracking, category sorting, and a fully responsive interface.
-              </p>
-              <div class="text-sm space-y-2">
-                <p class="font-medium text-primary">Built independently from scratch</p>
-                <p class="text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • Node.js • MongoDB • JWT • Vercel</p>
-              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • Node.js • Express • MongoDB • JWT • Vercel</p>
               <div class="flex flex-wrap gap-4 pt-2">
                 <a href="https://github.com/Shameendudekula/WardrobeIQ" target="_blank" rel="noopener noreferrer"
                    class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
                 <a href="https://wardrobe-iq.vercel.app/" target="_blank" rel="noopener noreferrer"
                    class="inline-block px-6 py-3 border-2 border-primary text-primary dark:text-white font-medium rounded-lg hover:bg-primary hover:text-white transition">Live Demo</a>
               </div>
-              <p class="pt-4 text-sm italic text-gray-500 dark:text-gray-400">
-                Shows: Ability to conceptualize, build, and refine a complete full-stack product independently
-              </p>
             </div>
-          </div>
+          </article>
+
+          <!-- COVID-19 Simulation -->
+          <article data-category="ai" x-show="filter === 'all' || filter === 'ai'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-sky-500/10 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-indigo-700 dark:text-indigo-400 text-center">COVID-19 Simulation</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300">Python &amp; AI</span>
+              <h3 class="text-2xl font-bold">COVID-19 Spread Simulation and Visualization</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Generates synthetic population records from country population and age-distribution data and simulates health-state transitions over a chosen date range. Pandas builds time series per country and age group, shown in a Streamlit interface with Matplotlib charts.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Python • Pandas • Matplotlib • Streamlit</p>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="https://github.com/Shameendudekula/covid-simulation" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
+                <a href="https://covid-simulation.streamlit.app/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 border-2 border-primary text-primary dark:text-white font-medium rounded-lg hover:bg-primary hover:text-white transition">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- AI Real Estate Valuation -->
+          <article data-category="ai" x-show="filter === 'all' || filter === 'ai'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-sky-500/10 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-indigo-700 dark:text-indigo-400 text-center">AI Real Estate Valuation</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300">Python &amp; AI</span>
+              <h3 class="text-2xl font-bold">AI Real Estate Valuation System</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Streamlit app that estimates residential property prices with a scikit-learn Random Forest Regressor. Features are prepared with Pandas and NumPy, with charts of price vs distance and house age, price distributions and feature importance. The trained model is stored with Joblib.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Python • scikit-learn • Pandas • NumPy • Seaborn • Streamlit • Joblib</p>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="https://github.com/Shameendudekula/AI-Real-Estate-Valuation-System" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- XMENTOR -->
+          <article data-category="research" x-show="filter === 'all' || filter === 'research'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-purple-700 dark:text-purple-400 text-center">XMENTOR</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-purple-500/10 text-purple-700 dark:text-purple-300">Research</span>
+              <h3 class="text-2xl font-bold">XMENTOR – Explainability-Driven Feature Selection for Software Defect Prediction</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Investigated SHAP, LIME and BreakDown explanations of a Gradient Boosting defect-prediction model on the ActiveMQ 5.8.0 dataset, and compared fixed-threshold and entropy-based strategies for feature-ranking agreement.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Python • Gradient Boosting • SHAP • LIME • BreakDown</p>
+            </div>
+          </article>
 
           <!-- Student Learning Hub -->
-          <div class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal group">
-            <div class="h-64 bg-gradient-to-br from-indigo-500/20 to-purple-600/10 flex items-center justify-center">
-              <p class="text-3xl font-bold text-indigo-700 dark:text-indigo-400">Student Learning Hub</p>
+          <article data-category="web" x-show="filter === 'all' || filter === 'web'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-primary text-center">Student Learning Hub</p>
             </div>
-            <div class="p-10 space-y-6">
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary">Full-Stack Web</span>
               <h3 class="text-2xl font-bold">Student Learning Hub – Role-Based Digital Learning Platform</h3>
               <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                 Educational platform supporting Student, Teacher, and Admin roles with structured learning material, progress tracking, and direct doubt clarification.
@@ -246,26 +404,20 @@
               <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                 Built role-based access controls, chapter-wise resource system, bookmarking with "continue where you left off", content upload for teachers, and chat-style doubt resolution.
               </p>
-              <div class="text-sm space-y-2">
-                <p class="font-medium text-primary">Built independently from scratch</p>
-                <p class="text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • LocalStorage • GitHub</p>
-              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • LocalStorage • GitHub</p>
               <div class="flex flex-wrap gap-4 pt-2">
                 <a href="https://github.com/Shameendudekula/student-learning-hub" target="_blank" rel="noopener noreferrer"
                    class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
               </div>
-              <p class="pt-4 text-sm italic text-gray-500 dark:text-gray-400">
-                Shows: Understanding of real user needs, complex flows, and clean system design
-              </p>
             </div>
-          </div>
+          </article>
 
         </div>
       </div>
     </section>
 
     <!-- APPROACH -->
-    <section class="py-32 px-6">
+    <section class="py-28 px-6 bg-gray-50 dark:bg-gray-800/30">
       <div class="max-w-4xl mx-auto text-center space-y-10 reveal">
         <h2 class="text-4xl font-bold">How I Work</h2>
         <div class="space-y-8 text-lg text-gray-700 dark:text-gray-300">
@@ -276,28 +428,52 @@
       </div>
     </section>
 
+    <!-- CERTIFICATES & ACTIVITIES -->
+    <section id="certificates" class="py-28 px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">Certificates &amp; Activities</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 reveal flex flex-col">
+            <h3 class="text-xl font-bold">Web Development Internship</h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-400 flex-1">Certificate of Participation</p>
+            <a href="https://drive.google.com/file/d/1URsheOUXjAwKyg77De8FkfXjQcxV8RXX/view" target="_blank" rel="noopener noreferrer"
+               class="inline-block mt-5 font-medium text-primary hover:underline">View certificate →</a>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 reveal flex flex-col">
+            <h3 class="text-xl font-bold">Ideation 2026, Phase 1</h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-400 flex-1">Certificate of Merit</p>
+            <a href="https://drive.google.com/file/d/1EWNMBX47W6d2g2X1S8uoh-E-Ls0p4yTz/view" target="_blank" rel="noopener noreferrer"
+               class="inline-block mt-5 font-medium text-primary hover:underline">View certificate →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
-    <section id="contact" class="py-32 px-6 bg-primary text-white">
+    <section id="contact" class="py-28 px-6 bg-primary text-white">
       <div class="max-w-4xl mx-auto text-center space-y-12">
-        <p class="text-2xl max-w-2xl mx-auto">
-          If you’re looking for a disciplined developer who learns fast and ships reliably — I’d be happy to connect.
-        </p>
+        <div class="space-y-5">
+          <h2 class="text-4xl font-bold">Get in Touch</h2>
+          <p class="text-xl max-w-2xl mx-auto">
+            Open to internships, collaborations and conversations about web development and applied AI.
+          </p>
+        </div>
 
         <!-- Contact Form – submitted via FormSubmit AJAX -->
         <form id="contact-form" novalidate class="max-w-xl mx-auto text-left space-y-5">
           <!-- Honeypot: hidden from humans, bots fill it and FormSubmit drops the message -->
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
           <div>
             <label for="cf-name" class="block mb-2 font-medium">Name</label>
             <input id="cf-name" name="name" type="text" required autocomplete="name"
                    class="w-full px-5 py-3 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/40"
-                   placeholder="Your name" />
+                   placeholder="Your name">
           </div>
           <div>
             <label for="cf-email" class="block mb-2 font-medium">Email</label>
             <input id="cf-email" name="email" type="email" required autocomplete="email"
                    class="w-full px-5 py-3 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/40"
-                   placeholder="you@example.com" />
+                   placeholder="you@example.com">
           </div>
           <div>
             <label for="cf-message" class="block mb-2 font-medium">Message</label>
@@ -321,13 +497,14 @@
       </div>
     </section>
 
-    <!-- Improved Footer -->
     <footer class="py-10 text-center text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700">
-      Built by Dudekula Shameen — improving continuously through real projects.
+      © <span id="year">2026</span> Shameen Dudekula
     </footer>
 
     <!-- Scroll Reveal -->
     <script>
+      document.getElementById('year').textContent = new Date().getFullYear()
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('active')
