@@ -1,94 +1,71 @@
 # Portfolio — Dudekula Shameen
 
-A focused, clean, and intentionally minimal portfolio built to help reviewers quickly understand who I am, what I’ve built, and how I think as a developer.  
-The goal is simple: make evaluation effortless.
+A clean, responsive personal portfolio that shows who I am, what I've built, and how I work as a developer. It is a single-page site built with HTML, Tailwind CSS and a little JavaScript, deployed on Vercel.
 
 ---
 
-## 🌍 Live Portfolio
+## 🌍 Live Demo
 
-🔗 https://portfolio-shameen.vercel.app
-
-(Designed to be viewed quickly, without scrolling confusion or unnecessary visual noise.)
+🔗 **https://portfolio-shameen.vercel.app**
 
 ---
 
-## 🎯 Purpose and Intent
+## ✨ Features
 
-This portfolio isn’t just a personal website — it reflects how I approach real work:
-
-- Clear structure  
-- Practical implementation  
-- Respect for time and attention  
-
-The content is straightforward because I believe strong execution speaks better than filler or unnecessary complexity.
-
-Recruiters and hiring managers should be able to answer three questions instantly:
-
-1. What can I do?
-2. What have I built?
-3. Am I improving consistently?
-
-This portfolio exists to make those answers obvious.
-
----
-
-## ✨ Key Design Principles
-
-- **Clarity first**: No clutter, no distractions.
-- **Fast scanning**: UX suitable for a 30–60 second recruiter review.
-- **Professional tone**: Language aligns with hiring expectations, not casual web content.
-- **Dark/Light Mode**: Accessibility and user preference respected.
-- **Responsive UI**: Works seamlessly across devices, including mobile evaluations.
-
----
-
-## 🧩 Features
-
-| Feature | Purpose |
+| Feature | Details |
 |--------|---------|
-| Resume Download | Immediate access without searching |
-| Project Showcase | Real work, not placeholders |
-| Theme Toggle | Personal preference and accessibility |
-| Minimal Layout | Faster mental processing and reduced cognitive load |
-| Mobile Optimized | Most first impressions happen on mobile |
+| **Responsive design** | Mobile-first layout tested down to 375px width; grids, buttons and links wrap cleanly on small screens |
+| **Project showcase** | Cards for WardrobeIQ and Student Learning Hub with descriptions, tech used, source code and live demo links |
+| **Contact form** | Name / Email / Message form sent via [FormSubmit](https://formsubmit.co) using `fetch()`; includes client-side validation, a "Sending…" state, success/error messages and a honeypot spam filter |
+| **Dark mode** | Light/dark toggle that follows the system preference and remembers your choice (`localStorage`) |
+| **Timeline** | About section with milestones from 2024 to 2026 |
+| **Resume** | View or download my resume (PDF) directly from the hero section |
+| **Scroll animations** | Sections fade in on scroll using `IntersectionObserver` |
 
 ---
 
 ## 🛠 Tech Stack
 
-- HTML5  
-- CSS   
-- JavaScript  
-- Git & GitHub  
-- Vercel Deployment
+- **HTML5** — semantic page structure
+- **Tailwind CSS** (via CDN) — utility-first styling and responsive breakpoints
+- **Alpine.js** — dark mode toggle and navbar scroll effect
+- **JavaScript (ES6+)** — contact form submission and scroll reveal
+- **FormSubmit** — form-to-email backend (no server needed)
+- **Git & GitHub** — version control
+- **Vercel** — hosting and continuous deployment
 
 ---
 
-## 📌 Current Focus
+## 🚀 Run Locally
 
-I am actively improving:
+```bash
+git clone https://github.com/Shameendudekula/portfolio.git
+cd portfolio
+npx serve .
+```
 
-- Backend development
-- Database integration
-- Full-stack deployment pipelines
-- Production-level application structure
+Then open http://localhost:3000.
 
-Progress is documented through real updates — not certificates or incomplete tutorials.
+> **Note:** The first time the contact form is used, FormSubmit sends a one-time activation email to the receiving address. Messages are delivered once it is confirmed.
+
+---
+
+## 📸 Screenshots
+
+> _Screenshots coming soon._
+
+| View | Screenshot |
+|------|-----------|
+| Desktop — Hero | `![Desktop hero](screenshots/desktop-hero.png)` |
+| Desktop — Projects | `![Desktop projects](screenshots/desktop-projects.png)` |
+| Mobile (375px) | `![Mobile view](screenshots/mobile.png)` |
+| Dark mode | `![Dark mode](screenshots/dark-mode.png)` |
+| Contact form | `![Contact form](screenshots/contact-form.png)` |
 
 ---
 
 ## 📬 Contact
 
-If you're reviewing this for hiring, collaboration, or freelance evaluation, you can reach me here:
-
 - Email: dudekulasha2006@gmail.com
 - LinkedIn: https://linkedin.com/in/shameen-d
 - GitHub: https://github.com/Shameendudekula
-
----
-
-### 🧿 Final Note
-
-> This portfolio evolves as I evolve. Every update represents progress — not perfection.
-

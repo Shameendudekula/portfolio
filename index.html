@@ -49,7 +49,7 @@
         else { document.documentElement.classList.remove('dark'); localStorage.theme = 'light' }
       })
     ">
-      <button @click="dark = !dark" 
+      <button type="button" @click="dark = !dark" :aria-label="dark ? 'Switch to light mode' : 'Switch to dark mode'" aria-label="Toggle dark mode" 
         class="fixed top-8 right-8 z-50 p-4 rounded-full shadow-xl transition-all duration-300
                bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600
                hover:scale-110 hover:shadow-2xl">
@@ -146,7 +146,7 @@
         <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
           I learn new technologies by applying them immediately in production-grade projects. When faced with unknowns, I research, implement, debug, and document — turning gaps into strengths.
         </p>
-        <div class="mt-16 grid grid-cols-1 md:grid-cols-cols-2 gap-8 max-w-3xl mx-auto">
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl border border-gray-200 dark:border-gray-700">
             <div class="text-5xl font-bold text-primary">2024</div>
             <p class="mt-4 text-lg">Started building real applications independently</p>
@@ -154,6 +154,10 @@
           <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl border border-gray-200 dark:border-gray-700">
             <div class="text-5xl font-bold text-primary">2025</div>
             <p class="mt-4 text-lg">Strengthening full-stack depth and production workflows</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl border border-gray-200 dark:border-gray-700">
+            <div class="text-5xl font-bold text-primary">2026</div>
+            <p class="mt-4 text-lg">Exchange at BTH, Sweden · Building and deploying full-stack apps with Node.js, Express and MongoDB</p>
           </div>
         </div>
       </div>
@@ -176,7 +180,7 @@
           <div class="space-y-6 reveal">
             <h3 class="text-xl font-semibold text-primary">Backend</h3>
             <div class="flex flex-wrap gap-3">
-              <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">Node.js & Express</span>
+              <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">Node.js &amp; Express</span>
               <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">REST APIs</span>
               <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">MongoDB</span>
               <span class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm">JWT Auth</span>
@@ -185,7 +189,7 @@
           <div class="space-y-6 reveal">
             <h3 class="text-xl font-semibold text-primary">Tools</h3>
             <div class="flex flex-wrap gap-3">
-              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Git & GitHub</span>
+              <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Git &amp; GitHub</span>
               <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Vercel / Render</span>
               <span class="px-5 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">VS Code</span>
             </div>
@@ -206,7 +210,7 @@
               <p class="text-3xl font-bold text-primary">WardrobeIQ</p>
             </div>
             <div class="p-10 space-y-6">
-              <h3 class="text-2xl font-bold">WardrobeIQ – Smart Wardrobe & Outfit Planner</h3>
+              <h3 class="text-2xl font-bold">WardrobeIQ – Smart Wardrobe &amp; Outfit Planner</h3>
               <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                 Practical wardrobe management system that helps users organize clothing items and make faster outfit decisions. Supports uploading, categorizing, and tracking outfits while preventing weekly repetition.
               </p>
@@ -217,7 +221,7 @@
                 <p class="font-medium text-primary">Built independently from scratch</p>
                 <p class="text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • Node.js • MongoDB • JWT • Vercel</p>
               </div>
-              <div class="flex gap-6 pt-2">
+              <div class="flex flex-wrap gap-4 pt-2">
                 <a href="https://github.com/Shameendudekula/WardrobeIQ" target="_blank" rel="noopener noreferrer"
                    class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
                 <a href="https://wardrobe-iq.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -246,12 +250,9 @@
                 <p class="font-medium text-primary">Built independently from scratch</p>
                 <p class="text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • LocalStorage • GitHub</p>
               </div>
-              <div class="flex gap-6 pt-2">
+              <div class="flex flex-wrap gap-4 pt-2">
                 <a href="https://github.com/Shameendudekula/student-learning-hub" target="_blank" rel="noopener noreferrer"
                    class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
-                <a href="#" class="inline-block px-6 py-3 border-2 border-gray-400 text-gray-500 font-medium rounded-lg cursor-not-allowed">
-                  Live Demo (Coming Soon)
-                </a>
               </div>
               <p class="pt-4 text-sm italic text-gray-500 dark:text-gray-400">
                 Shows: Understanding of real user needs, complex flows, and clean system design
@@ -261,8 +262,6 @@
 
         </div>
       </div>
-    </section>
-
     </section>
 
     <!-- APPROACH -->
@@ -283,11 +282,42 @@
         <p class="text-2xl max-w-2xl mx-auto">
           If you’re looking for a disciplined developer who learns fast and ships reliably — I’d be happy to connect.
         </p>
-        <div class="flex justify-center gap-16 mt-10 text-2xl font-medium">
+
+        <!-- Contact Form – submitted via FormSubmit AJAX -->
+        <form id="contact-form" novalidate class="max-w-xl mx-auto text-left space-y-5">
+          <!-- Honeypot: hidden from humans, bots fill it and FormSubmit drops the message -->
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <div>
+            <label for="cf-name" class="block mb-2 font-medium">Name</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name"
+                   class="w-full px-5 py-3 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/40"
+                   placeholder="Your name" />
+          </div>
+          <div>
+            <label for="cf-email" class="block mb-2 font-medium">Email</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email"
+                   class="w-full px-5 py-3 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/40"
+                   placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="cf-message" class="block mb-2 font-medium">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required
+                      class="w-full px-5 py-3 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/40 resize-y"
+                      placeholder="How can I help?"></textarea>
+          </div>
+          <button type="submit"
+                  class="w-full sm:w-auto px-8 py-4 bg-white text-primary font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition disabled:opacity-60 disabled:cursor-not-allowed">
+            Send
+          </button>
+          <p id="cf-status" role="status" aria-live="polite" class="min-h-[1.5rem] font-medium"></p>
+        </form>
+
+        <div class="flex flex-wrap justify-center gap-x-12 gap-y-4 mt-10 text-2xl font-medium">
           <a href="https://linkedin.com/in/shameen-d" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">LinkedIn</a>
           <a href="https://github.com/Shameendudekula" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">GitHub</a>
           <a href="mailto:dudekulasha2006@gmail.com" class="hover:opacity-80 transition">Email</a>
         </div>
+        <p class="text-lg text-white/80 break-all">dudekulasha2006@gmail.com</p>
       </div>
     </section>
 
@@ -304,6 +334,53 @@
         })
       }, { threshold: 0.1 })
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    </script>
+
+    <!-- Contact Form Submit -->
+    <script>
+      const form = document.getElementById('contact-form')
+      const statusEl = document.getElementById('cf-status')
+      const submitBtn = form.querySelector('button[type="submit"]')
+
+      const setStatus = (msg, ok) => {
+        statusEl.textContent = msg
+        statusEl.className = 'min-h-[1.5rem] font-medium ' + (ok ? 'text-white' : 'text-yellow-200')
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const name = document.getElementById('cf-name').value.trim()
+        const email = document.getElementById('cf-email').value.trim()
+        const message = document.getElementById('cf-message').value.trim()
+
+        if (!name || !email || !message) return setStatus('Please fill in all fields.', false)
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setStatus('Please enter a valid email address.', false)
+
+        submitBtn.disabled = true
+        submitBtn.textContent = 'Sending…'
+        setStatus('', true)
+
+        try {
+          const res = await fetch('https://formsubmit.co/ajax/dudekulasha2006@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              name, email, message,
+              _subject: 'New message from portfolio',
+              _honey: form.querySelector('[name="_honey"]').value,
+            }),
+          })
+          const data = await res.json().catch(() => ({}))
+          if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Request failed')
+          setStatus('Thanks! Your message has been sent.', true)
+          form.reset()
+        } catch (err) {
+          setStatus('Sorry, something went wrong. Please email me directly.', false)
+        } finally {
+          submitBtn.disabled = false
+          submitBtn.textContent = 'Send'
+        }
+      })
     </script>
   </body>
 </html>
