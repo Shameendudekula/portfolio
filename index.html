@@ -290,7 +290,8 @@
     <!-- PROJECTS – filterable cards -->
     <section id="projects" class="py-28 px-6" x-data="{ filter: 'all' }">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
+        <h2 class="text-4xl font-bold text-center mb-4">Projects</h2>
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-10">Live demos run on Render's free tier and may take up to a minute to wake up.</p>
 
         <div class="flex flex-wrap justify-center gap-3 mb-14" role="group" aria-label="Filter projects">
           <button type="button" data-filter="all" @click="filter = 'all'" :aria-pressed="(filter === 'all').toString()" aria-pressed="true"
@@ -308,6 +309,74 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-10">
+
+          <!-- Student Management System -->
+          <article data-category="web" x-show="filter === 'all' || filter === 'web'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-primary text-center">Student Management</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary">Full-Stack Web</span>
+              <h3 class="text-2xl font-bold">Student Management System</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Full-stack CRUD app to add, view, edit and delete student records, with search, course filter, pagination, a stats dashboard, validation and duplicate checks.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • Node.js • Express • MongoDB Atlas • Render</p>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="https://github.com/Shameendudekula/student-management" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
+                <a href="https://student-management-3ihp.onrender.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 border-2 border-primary text-primary dark:text-white font-medium rounded-lg hover:bg-primary hover:text-white transition">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Expense Tracker -->
+          <article data-category="web" x-show="filter === 'all' || filter === 'web'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-primary text-center">Expense Tracker</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary">Full-Stack Web</span>
+              <h3 class="text-2xl font-bold">Expense Tracker</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Personal finance app with JWT login, income/expense CRUD, filters, monthly reports built with MongoDB aggregation, Chart.js charts, CSV export and multi-currency support (SEK, INR, USD).
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • Chart.js • Node.js • Express • MongoDB • JWT • Render</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Demo login: demo@example.com / demo1234</p>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="https://github.com/Shameendudekula/expense-tracker" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
+                <a href="https://expense-tracker-e0ck.onrender.com" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 border-2 border-primary text-primary dark:text-white font-medium rounded-lg hover:bg-primary hover:text-white transition">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mini Store – E-Commerce -->
+          <article data-category="web" x-show="filter === 'all' || filter === 'web'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-primary text-center">Mini Store</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary">Full-Stack Web</span>
+              <h3 class="text-2xl font-bold">Mini Store – E-Commerce Website</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Online store with product search, filters and sorting; guest cart merged into the account at login; checkout with atomic stock reservation; order history; and a role-protected admin dashboard for products and orders.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">HTML • CSS • JavaScript • Node.js • Express • MongoDB • JWT • Render</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Demo: demo@example.com / demo1234 · Admin: admin@example.com / admin1234</p>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="https://github.com/Shameendudekula/ecommerce-store" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
+                <a href="https://ecommerce-store-qgr5.onrender.com" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 border-2 border-primary text-primary dark:text-white font-medium rounded-lg hover:bg-primary hover:text-white transition">Live Demo</a>
+              </div>
+            </div>
+          </article>
 
           <!-- WardrobeIQ -->
           <article data-category="web" x-show="filter === 'all' || filter === 'web'"
