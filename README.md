@@ -8,6 +8,8 @@ Personal portfolio of **Shameen Dudekula**, a Computer Science and Engineering s
 
 🔗 **https://portfolio-shameen.vercel.app**
 
+💻 **Source:** https://github.com/Shameendudekula/portfolio
+
 ---
 
 ## 🗂 Sections
@@ -79,16 +81,13 @@ portfolio/
 
 ## 📸 Screenshots
 
-> _Screenshots coming soon._
+Screenshots from the live site (desktop 1280px, mobile 375px).
 
-| View | Screenshot |
-|------|-----------|
-| Desktop — Hero | `![Desktop hero](screenshots/desktop-hero.png)` |
-| Desktop — Projects | `![Desktop projects](screenshots/desktop-projects.png)` |
-| Mobile (375px) | `![Mobile view](screenshots/mobile.png)` |
-| Mobile menu | `![Mobile menu](screenshots/mobile-menu.png)` |
-| Dark mode | `![Dark mode](screenshots/dark-mode.png)` |
-| Contact form | `![Contact form](screenshots/contact-form.png)` |
+<table>
+<tr><td align="center" valign="top"><b>Desktop — Hero</b><br><img src="screenshots/desktop-hero.png" alt="Desktop — Hero" width="100%"></td><td align="center" valign="top"><b>Desktop — Projects</b><br><img src="screenshots/desktop-projects.png" alt="Desktop — Projects" width="100%"></td></tr>
+<tr><td align="center" valign="top"><b>Mobile (375px)</b><br><img src="screenshots/mobile.png" alt="Mobile (375px)" width="260"></td><td align="center" valign="top"><b>Mobile menu</b><br><img src="screenshots/mobile-menu.png" alt="Mobile menu" width="260"></td></tr>
+<tr><td align="center" valign="top"><b>Dark mode</b><br><img src="screenshots/dark-mode.png" alt="Dark mode" width="100%"></td><td align="center" valign="top"><b>Contact form</b><br><img src="screenshots/contact-form.png" alt="Contact form" width="100%"></td></tr>
+</table>
 
 ---
 
