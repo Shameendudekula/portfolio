@@ -310,6 +310,29 @@
 
         <div class="grid md:grid-cols-2 gap-10">
 
+          <!-- AI Agent Review Harness -->
+          <article data-category="ai" x-show="filter === 'all' || filter === 'ai'"
+                   class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">
+            <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-sky-500/10 flex items-center justify-center px-6">
+              <p class="text-3xl font-bold text-indigo-700 dark:text-indigo-400 text-center">Agent Review Harness</p>
+            </div>
+            <div class="p-8 md:p-10 space-y-5">
+              <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300">Python &amp; AI</span>
+              <h3 class="text-2xl font-bold">AI Agent Review Harness</h3>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Human-in-the-loop oversight for AI agents. An agent proposes a plan with steps, assumptions and tool actions; a rule-based policy rates each action's risk; a reviewer approves, rejects or requests a revision; and the backend re-authorizes every action from an append-only audit trail before any simulated tool runs. Includes a reproducible evaluation comparing structured review with a simple approve-or-stop gate.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Python • FastAPI • PostgreSQL • SQLAlchemy • React • TypeScript • Tailwind CSS • Playwright • GitHub Actions • Render</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">157 backend tests, 15 frontend tests and 6 end-to-end journeys in CI · The demo uses a mock agent and simulated tools</p>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="https://github.com/Shameendudekula/ai-agent-review-harness" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-teal-700 transition">View Code</a>
+                <a href="https://review-harness-web.onrender.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-6 py-3 border-2 border-primary text-primary dark:text-white font-medium rounded-lg hover:bg-primary hover:text-white transition">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
           <!-- Student Management System -->
           <article data-category="web" x-show="filter === 'all' || filter === 'web'"
                    class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition reveal">

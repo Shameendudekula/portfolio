@@ -20,7 +20,7 @@ Personal portfolio of **Shameen Dudekula**, a Computer Science and Engineering s
 | **About** | Short introduction, Education (BTH, JNTUA) and a 2024–2026 journey timeline |
 | **Experience** | Infosys Springboard Virtual Internship 7.0 |
 | **Skills** | Programming, Web & Backend, Data & Applied AI, Tools |
-| **Projects** | Student Management System, Expense Tracker, Mini Store (e-commerce), WardrobeIQ, COVID-19 Simulation, AI Real Estate Valuation, XMENTOR (research), Student Learning Hub |
+| **Projects** | AI Agent Review Harness, Student Management System, Expense Tracker, Mini Store (e-commerce), WardrobeIQ, COVID-19 Simulation, AI Real Estate Valuation, XMENTOR (research), Student Learning Hub |
 | **Certificates & Activities** | Web Development Internship, Ideation 2026 Phase 1 |
 | **Contact** | Contact form plus LinkedIn, GitHub and email |
 
