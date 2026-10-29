@@ -81,12 +81,12 @@ portfolio/
 
 ## 📸 Screenshots
 
-Screenshots from the live site (desktop 1280px, mobile 375px).
+Screenshots taken from the live site (desktop 1280px, mobile 375px).
 
 <table>
-<tr><td align="center" valign="top"><b>Desktop — Hero</b><br><img src="screenshots/desktop-hero.png" alt="Desktop — Hero" width="100%"></td><td align="center" valign="top"><b>Desktop — Projects</b><br><img src="screenshots/desktop-projects.png" alt="Desktop — Projects" width="100%"></td></tr>
-<tr><td align="center" valign="top"><b>Mobile (375px)</b><br><img src="screenshots/mobile.png" alt="Mobile (375px)" width="260"></td><td align="center" valign="top"><b>Mobile menu</b><br><img src="screenshots/mobile-menu.png" alt="Mobile menu" width="260"></td></tr>
-<tr><td align="center" valign="top"><b>Dark mode</b><br><img src="screenshots/dark-mode.png" alt="Dark mode" width="100%"></td><td align="center" valign="top"><b>Contact form</b><br><img src="screenshots/contact-form.png" alt="Contact form" width="100%"></td></tr>
+<tr><td align="center" valign="top" width="50%"><b>Home</b><br><img src="screenshots/desktop-hero.png" alt="Home" width="100%"></td><td align="center" valign="top" width="50%"><b>Projects</b><br><img src="screenshots/desktop-projects.png" alt="Projects" width="100%"></td></tr>
+<tr><td align="center" valign="top" width="50%"><b>Contact form</b><br><img src="screenshots/contact-form.png" alt="Contact form" width="100%"></td><td align="center" valign="top" width="50%"><b>Dark mode</b><br><img src="screenshots/dark-mode.png" alt="Dark mode" width="100%"></td></tr>
+<tr><td align="center" valign="top" width="50%"><b>Mobile (375px)</b><br><img src="screenshots/mobile.png" alt="Mobile (375px)" width="260"></td><td align="center" valign="top" width="50%"><b>Mobile menu open</b><br><img src="screenshots/mobile-menu.png" alt="Mobile menu open" width="260"></td></tr>
 </table>
 
 ---
